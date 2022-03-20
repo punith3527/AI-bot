@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Chatbot in PHP | CampCodes</title>
+    <title>Chatbot in PHP</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
-        <div class="title">Simple Online Chatbot</div>
+        <div class="title">Chat-bot</div>
         <div class="form">
             <div class="bot-inbox inbox">
                 <div class="icon">
@@ -24,13 +24,14 @@
         <div class="typing-field">
             <div class="input-data">
                 <input id="data" type="text" placeholder="Type something here.." required>
-                <button id="send-btn">Send</button>
+                <button id="send-btn" >Send</button>
             </div>
         </div>
     </div>
 
     <script>
         $(document).ready(function(){
+            
             $("#send-btn").on("click", function(){
                 $value = $("#data").val();
                 $msg = '<div class="user-inbox inbox"><div class="msg-header"><p>'+ $value +'</p></div></div>';

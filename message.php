@@ -5,7 +5,7 @@ $conn = mysqli_connect("localhost", "root", "", "bot") or die("Database Error");
 // getting user message through ajax
 $getMesg = mysqli_real_escape_string($conn, $_POST['text']);
 $msg = $getMesg;
-
+$k = 0;
 
 
 
@@ -30,35 +30,34 @@ if(mysqli_num_rows($run_query) > 0){
 
 }else{
     
-    //$getMesg = preg_replace('/\s+/', '', $getMesg);
-    //$getMesg = preg_replace('/[^A-Za-z0-9]/', "", $getMesg);
-    $getMesg = preg_replace('/\s+/', '%20', $getMesg);
+    //$getMesg = preg_replace('/\s+/', '%20', $getMesg);
+    $getMesg = rawurlencode($getMesg);
+    $getMesg = str_replace('%5C', '', $getMesg);
 
-   // $url = 'http://api.brainshop.ai/get?bid=160167&key=8h8vRUhkZo5zyBrO&uid=[uid]&msg='. $getMesg;
-
-    //function get_content($url){
-    //    $ch = curl_init();
-    //    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //    curl_setopt($ch, CURLOPT_URL, $url);
-    //    $data = curl_exec($ch);
-    //    curl_close($ch);
-    //    return $data;
-  //}
-  
- // echo get_content($url);
-
+    $k = 1;
     $f = file_get_contents('http://api.brainshop.ai/get?bid=160167&key=8h8vRUhkZo5zyBrO&uid=[uid]&msg='. $getMesg);
-    //echo $getMesg;
-    //echo $getMesg. "+";
+
     $str2 = substr($f, 8);
     $str3 = substr_replace($str2, "",-2);
+    //echo $getMesg;
     echo $str3;
-    
-    $insert = "INSERT INTO `conversations`(`User`, `Bot`) VALUES ($msg,$str3) ";
-    
-
     //echo "Sorry can't be able to understand you!";
     
 }
+
+try{
+    if($k > 0){
+    $insert = "INSERT INTO `conversations` (`User`, `Bot`) VALUES ('$msg', '$str3')";
+    mysqli_query($conn, $insert);}
+    else{
+    $insert = "INSERT INTO `conversations` (`User`, `Bot`) VALUES ('$msg', '$replay')";
+    mysqli_query($conn, $insert);}
+    
+
+    }
+//catch exception
+    catch(Exception $e) {
+        echo('Message: ' .$e->getMessage());
+    }
 
 ?>
