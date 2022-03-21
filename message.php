@@ -33,12 +33,29 @@ $arr = array(
 $words = explode(' ', $getMesg);
 
 
-foreach( $keys of $arr){
+foreach ($arr as $key => $value) {
+    echo $key;
+   }
 
-    foreach( ){
-        if(in_array('bits',$words)){
+foreach( $arr as $key => $value){
 
+    $key = strtolower($key);
+    $getMesg= strtolower($getMesg);
+
+    $words = explode(' ', $getMesg);
+    $words1 = explode(' ', $key);
+    $b = 0;
+    foreach( $words1 as $v ){
+
+        if(in_array($v,$words)){
+            $b = 1;
+        }else{
+            $b = 0;
+            break;
         }
+    }
+    if($b == 1){
+        echo $arr[$key];
     }
 }
 
