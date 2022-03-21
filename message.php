@@ -8,6 +8,7 @@ $msg = $getMesg;
 $k = 0;
 
 
+$name = "BRO";
 
 //checking user query to database query
 $check_data = "SELECT replies FROM chatbot WHERE queries = '$getMesg'";
@@ -15,6 +16,31 @@ $check_data = "SELECT replies FROM chatbot WHERE queries = '$getMesg'";
 //$run_query2= mysqli_query($conn, $insert_data);
 $run_query = mysqli_query($conn, $check_data) or die("Error");
 
+
+$arr = array(
+    "eateries bits hyd"=>"These are some of the Eatiries in BITS Hyderabad
+                            1. Yumpies 2. Hotspot 3. Amul",
+    "hello"=>"Hello there",
+    "hi"=>"Hello",
+    "your name"=>"My name is BRO",
+    "good morning"=>"Good Morning, My friend",
+    "good night"=>"Good Night, Dude",
+    "good evening"=>"Good Evening",
+    "good afternoon"=>"Good Afternoon",
+);
+
+
+$words = explode(' ', $getMesg);
+
+
+foreach( $keys of $arr){
+
+    foreach( ){
+        if(in_array('bits',$words)){
+
+        }
+    }
+}
 
 
 
