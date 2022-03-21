@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot in PHP</title>
+    <title>AI assignment</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
-        <div class="title">Chat-bot</div>
+        <div class="title">Chat Bot</div>
         <div class="form">
             <div class="bot-inbox inbox">
                 <div class="icon">
@@ -46,7 +46,6 @@
                     success: function(result){
                         $replay = '<div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>'+ result +'</p></div></div>';
                         $(".form").append($replay);
-                        // when chat goes down the scroll bar automatically comes to the bottom
                         $(".form").scrollTop($(".form")[0].scrollHeight);
                     }
                 });
