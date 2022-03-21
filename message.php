@@ -30,7 +30,6 @@ $arr = array(
 );
 
 
-$words = explode(' ', $getMesg);
 
 
 foreach ($arr as $key => $value) {
